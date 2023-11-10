@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * 
  * @author Ian Tan
- * @version 9/11/2023
+ * @version 10/11/2023
  */
 public class BombSquare extends GameSquare
 {
@@ -93,34 +93,8 @@ public class BombSquare extends GameSquare
 				if(adjGameSquare != null && adjGameSquare != this && !visitedSquares.contains(adjGameSquare))
 				{
 					adjGameSquare.clicked();
-					adjGameSquare.clickAdjSquares(getBombCount(adjGameSquare), visitedSquares);
 				}
 			}
 		}
-	}
-	
-	/**
-	 * @param square This variable is the position of the bomb square object
-	 * @return This returns bombCount of an adjacent square
-	 * This method is called to find the number of bombs in an adjacent square's adjacent square
-	 */
-	public int getBombCount(BombSquare square) 
-	{
-		int bombCount = 0;
-	
-		for (int i = 0; i < 3; i++) 
-		{
-			for (int j = 0; j < 3; j++) 
-			{
-				adjGameSquare = (BombSquare) board.getSquareAt(square.xLocation + i - 1, square.yLocation + j - 1);
-	
-				if (adjGameSquare != null && adjGameSquare != square && adjGameSquare.thisSquareHasBomb) 
-				{
-					bombCount++;
-				}
-			}
-		}
-	
-		return bombCount;
 	}
 }
